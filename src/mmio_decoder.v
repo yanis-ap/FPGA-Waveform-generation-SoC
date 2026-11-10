@@ -126,40 +126,6 @@ module mmio_decoder #(
         .waveform(waveform)
     );
 
-//    // ---------------- MMIO read mux (registered, 1-cycle latency) ----------------
-//    reg [31:0] mmio_read_data;
-//    always @(posedge clk) begin
-//        if (mem_read && is_mmio) begin
-//            case (address)
-//                ADDR_STATUS:   mmio_read_data <= {31'd0, commit_error};
-//                ADDR_WAVEFORM: mmio_read_data <= waveform;
-//                default:       mmio_read_data <= 32'd0;
-//            endcase
-//        end
-//    end
-
-//    // ---------------- Backing memory ----------------
-//    wire mem_sel = ~is_mmio;
-//    wire [31:0] dmem_read_data;
-
-//    DataMemory dmem (
-//        .clk(clk),
-//        .mem_write(mem_write && mem_sel),
-//        .mem_read(mem_read && mem_sel),
-//        .address(address),
-//        .write_data(write_data),
-//        .read_data(dmem_read_data)
-//    );
-
-//    // ---------------- Final read select ----------------
-//    // is_mmio must be registered here too, since dmem/mmio_read_data are
-//    // already 1-cycle delayed relative to the address that requested them.
-//    reg is_mmio_d;
-//    always @(posedge clk) begin
-//        if (mem_read) is_mmio_d <= is_mmio;
-//    end
-
-//change test
 // ---------------- MMIO read mux (Combinational, 0-cycle latency) ----------------
     wire [31:0] mmio_read_data_comb;
     
