@@ -16,25 +16,25 @@ The SoC couples a custom 32-bit RISC CPU with instruction/data memories and the 
                                 |
                         Memory Interface
                                 |
-                     mem_addr, mem_data
+                       mem_addr, mem_data
                                 |
                                 v
                      +--------------------+
                      |    MMIO Decoder    |
                      +--------------------+
                          /            \
-      is_mmio = 0   /              \   is_mmio = 1
-                   v                v
-        +----------------+    +----------------+
-        |  Data Memory   |    | DDS Registers  |
-        +----------------+    +----------------+
-                   \                /
-                    +-------+------+
-                            |
-                      read_data mux
-                            |
-                            v
-                      Processor Core
+          is_mmio = 0   /              \   is_mmio = 1
+                       v                v
+            +----------------+    +----------------+
+            |  Data Memory   |    | DDS Registers  |
+            +----------------+    +----------------+
+                       \                /
+                        +-------+------+
+                                |
+                          read_data mux
+                                |
+                                v
+                          Processor Core
 ```
 *Figure 1: High-level routing and MMIO decoding architecture of the integrated SoC[cite: 4].*
 
@@ -101,17 +101,17 @@ The SoC was verified using self-contained Verilog testbenches validating clock/r
 
 ### 1. Multi-Waveform Synthesis (Sine, Square, Triangle, Sawtooth)
 <!-- IMAGE PLACEHOLDER 2: Replace the path below with your screenshot of Figure 2 -->
-![Multi-Waveform Synthesis](images/Screenshot 2026-07-22 132843.png)
+![Multi-Waveform Synthesis](images/image_1.png)
 *Figure 2: Behavioral simulation verifying dynamic switching across Sine, Square, Triangle, and Sawtooth modes via MMIO register updates[cite: 11].*
 
 ### 2. Automated Frequency Sweep
 <!-- IMAGE PLACEHOLDER 3: Replace the path below with your screenshot of Figure 3 -->
-![Frequency Sweep Output](images/Screenshot 2026-07-22 152716.png)
+![Frequency Sweep Output](images/image_2.png)
 *Figure 3: Real-time frequency sweep output demonstrating continuous phase accumulation across programmed start/stop boundaries[cite: 9, 12].*
 
 ### 3. QPSK Phase Modulation
 <!-- IMAGE PLACEHOLDER 4: Replace the path below with your screenshot of Figure 4 -->
-![QPSK Output](images/Screenshot 2026-07-22 150737.png)
+![QPSK Output](images/image_3.png)
 *Figure 4: QPSK modulated sine-wave output showing clean phase transitions across symbol changes[cite: 10, 12].*
 
 ### Hardware Synthesis Metrics (Xilinx Vivado)
